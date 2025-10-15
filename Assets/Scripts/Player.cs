@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private float runMultiplier = 2f;
     private float crouchMultiplier = 0.25f;
     private float rotationSpeed = 10f;
-    private float crouchHeight = 0.5f;
+    private float crouchHeight = 0.25f;
     private float originalHeight;
     private bool isRunning = false;
     private bool isCrouching = false;
