@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_EnemyController
   _patrolPoints: []
-  _player: {fileID: 0}
+  _player: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
 --- !u!195 &4893351657295308732
 NavMeshAgent:
   m_ObjectHideFlags: 0

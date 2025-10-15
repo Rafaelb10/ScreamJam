@@ -18,6 +18,7 @@ public class SearchState : AI_State
         _searchTimer = 0f;
 
         _enemyController.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(_enemyController.LastestPlayerPos);
+        //colocar aqui efeito de pressão visual ?
     }
 
     public override void Run()
