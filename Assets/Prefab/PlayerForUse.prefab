@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8657876396106438597}
   - component: {fileID: 4027745597644920463}
   - component: {fileID: 3929415199205517477}
-  - component: {fileID: 7182833847896251143}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: Untagged
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 695538997851175682}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.776, y: 0.86800003, z: 0}
+  m_LocalPosition: {x: -0.04413, y: -0.19025004, z: -5.34771}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61,9 +60,9 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60
+    FieldOfView: 60.000004
     OrthographicSize: 5
-    NearClipPlane: 0.05
+    NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -189,36 +188,6 @@ MonoBehaviour:
         DecelTime: 0.2
   PlayerIndex: -1
   AutoEnableInputs: 1
---- !u!114 &7182833847896251143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695538997851175682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
-  CameraRadius: 5
-  Decollision:
-    Enabled: 1
-    ObstacleLayers:
-      serializedVersion: 2
-      m_Bits: 1
-    UseFollowTarget:
-      Enabled: 0
-      YOffset: 0
-    Damping: 0.5
-    SmoothingTime: 0
-  TerrainResolution:
-    Enabled: 0
-    TerrainLayers:
-      serializedVersion: 2
-      m_Bits: 1
-    MaximumRaycast: 10
-    Damping: 0.2
 --- !u!1 &2404150854924461514
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,24 +234,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.776
+      value: -0.04413
       objectReference: {fileID: 0}
     - target: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.568
+      value: -0.49025
       objectReference: {fileID: 0}
     - target: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5.34771
       objectReference: {fileID: 0}
     - target: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
       propertyPath: m_LocalRotation.w
@@ -310,10 +271,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4877329068017287560, guid: a6e5c070aad402941a69f065360aa129, type: 3}
-      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
