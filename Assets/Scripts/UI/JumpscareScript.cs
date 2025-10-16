@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class JumpscareScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator _jesterController;
+    [SerializeField] private GameObject _jumpscareUI;
+    
+    private void Awake()
     {
+        _jesterController = GameObject.FindObjectOfType<Animator>().GetComponent<Animator>();
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void JumpscareSequence()
     {
-        
+        _jesterController.SetBool("isAttacking", true);
+        _jumpscareUI.SetActive(true);
     }
 }
