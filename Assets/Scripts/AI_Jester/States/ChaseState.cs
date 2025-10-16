@@ -13,6 +13,8 @@ public class ChaseState : AI_State
     public override void Enter()
     {
         Debug.Log("Entering Chase State");
+        _enemyController.GetAnimationHandler().ChasingAnimationOn();
+        _enemyController.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = _enemyController.GetChaseSpeed();
     }
 
     public override void Run()
@@ -48,10 +50,7 @@ public class ChaseState : AI_State
                     {
                         _stateMachine.ChangeState(_enemyController.GetState(AI_EnemyController.StateType.Stalk));
                     }
-                }
-
-                
-
+                }                
                 return;
             }
             else
@@ -65,10 +64,8 @@ public class ChaseState : AI_State
             _stateMachine.ChangeState(_enemyController .GetState(AI_EnemyController.StateType.Search));
         }
     }
-
-    // 3 opcoes, flee, stalk, attack
     public override void Exit()
     {
-        base.Exit();
+        _enemyController.GetAnimationHandler().ChasingAnimationOff();
     }
 }

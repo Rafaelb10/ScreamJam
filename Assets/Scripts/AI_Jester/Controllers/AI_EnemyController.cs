@@ -18,7 +18,8 @@ public class AI_EnemyController : MonoBehaviour
     private float _changeStateDistance = 10f;
 
     private float _stalkSpeed = 1;
-    private float _walkSpeed = 4;
+    private float _walkSpeed = 2.5f;
+    private float _chaseSpeed = 4;
     private float _runSpeed = 8;
 
     private Vector3 _lastestPlayerPos;
@@ -77,6 +78,7 @@ public class AI_EnemyController : MonoBehaviour
     public float GetWalkSpeed() => _walkSpeed;
     public float GetRunSpeed() => _runSpeed;
     public float GetStalkSpeed() => _stalkSpeed;
+    public float GetChaseSpeed() => _chaseSpeed;
     public Animator GetAnimator() => _animator;
     public enum StateType
     {
