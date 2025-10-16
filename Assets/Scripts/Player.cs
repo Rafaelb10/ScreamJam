@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private float runMultiplier = 1.5f;
     private float crouchMultiplier = 0.25f;
     private float rotationSpeed = 10f;
-    private float crouchHeight = 0.25f;
+    private float crouchHeight = 0.30f;
     private float originalHeight;
     private bool isRunning = false;
     private bool isCrouching = false;
@@ -83,6 +83,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetMoveSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+    }
+
     public void Interact(InputAction.CallbackContext context)
     {
         if (context.performed && cam != null)
@@ -99,4 +104,5 @@ public class Player : MonoBehaviour
             }
         }
     }
+
 }
