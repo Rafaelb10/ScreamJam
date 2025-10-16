@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class WaterLevel : MonoBehaviour
 {
     [SerializeField] private Player player;
-    private float moveSpeedNormal = 3f;
-    private float waterRiseSpeed = 0.1f;
-    private float targetY = -0.47f;
-    private float startY = -2.01f;
+     private float moveSpeedNormal = 3f;
+     private float waterRiseSpeed = 0.02f;
+     private float waterLowerSpeed = 0.5f; // Velocidade da redução
+     private float targetY = -0.47f;
+     private float startY = -2.01f;
 
-    private float lastY; 
+    private float lastY;
+    private Coroutine reduzirAguaCoroutine;
 
     void Start()
     {
@@ -53,10 +56,24 @@ public class WaterLevel : MonoBehaviour
 
     public void ReduzirAgua(float valor)
     {
-        transform.position = new Vector3(
-            transform.position.x,
-            transform.position.y - valor,
-            transform.position.z
-        );
+        // Se já estiver a reduzir, para antes de começar outra vez
+        if (reduzirAguaCoroutine != null)
+            StopCoroutine(reduzirAguaCoroutine);
+
+        reduzirAguaCoroutine = StartCoroutine(ReduzirAguaSuavemente(valor));
+    }
+
+    private IEnumerator ReduzirAguaSuavemente(float valor)
+    {
+        float destinoY = transform.position.y - valor;
+        while (transform.position.y > destinoY)
+        {
+            transform.position = new Vector3(
+                transform.position.x,
+                Mathf.MoveTowards(transform.position.y, destinoY, waterLowerSpeed * Time.deltaTime),
+                transform.position.z
+            );
+            yield return null;
+        }
     }
 }
