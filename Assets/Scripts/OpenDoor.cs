@@ -1,11 +1,19 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
     [SerializeField] private float code;
+    [SerializeField] private GameObject door;
     private List<float> currentCodeList = new List<float>();
     private bool isOpen = false;
+
+    private float distance = 2f; 
+    private float speed = 2f; 
+
+    private bool isMoving = false;
 
 
     public void AddCode(float number)
@@ -28,12 +36,32 @@ public class OpenDoor : MonoBehaviour
         if (Mathf.Approximately(enteredCode, code))
         {
             isOpen = true;
-            Debug.Log("Porta Aberta!");
+            StartCoroutine(MoveZSmooth());
         }
         else
         {
-            Debug.Log("Código incorreto! Resetando...");
             currentCodeList.Clear();
         }
+    }
+
+    private IEnumerator MoveZSmooth()
+    {
+        isMoving = true;
+
+        Vector3 startPos = door.transform.position;
+        Vector3 targetPos = startPos + new Vector3(0, 0, distance);
+
+        float elapsed = 0f;
+        float duration = distance / speed; 
+
+        while (elapsed < duration)
+        {
+            door.transform.position = Vector3.Lerp(startPos, targetPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        door.transform.position = targetPos; 
+        isMoving = false;
     }
 }

@@ -9,6 +9,7 @@ public class FleeState : AI_State
     public override void Enter()
     {
         Debug.Log("Entering Flee State");
+        _enemyController.GetAnimationHandler().FleeAnimationOn();
     }
     public override void Run()
     {
@@ -28,6 +29,7 @@ public class FleeState : AI_State
         // _stateMachine.ChangeState(_enemyController.GetState(AI_EnemyController.StateType.Chase));
     }
     public override void Exit() 
-    { 
+    {
+        _enemyController.GetAnimationHandler().FleeAnimationOff();
     }
 }

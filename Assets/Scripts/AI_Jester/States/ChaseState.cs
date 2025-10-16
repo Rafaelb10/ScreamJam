@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class ChaseState : AI_State
 {
-    private float _maxDistanceToPlayer = 8f; 
+    private float _maxDistanceToPlayer = 8f;
+
     public ChaseState(AI_EnemyController enemyController, AI_StateMachine stateMachine) : base(enemyController, stateMachine)
     {
         _enemyController = enemyController;
@@ -28,9 +29,9 @@ public class ChaseState : AI_State
             if(hit.transform != null && hit.collider.gameObject == _enemyController.GetPlayer().gameObject)
             {
                 Debug.Log("Player in sight during chase");
-                //fazer aqui qualquer tipo de efeito ou som
+                //efeito de pressão visual ?
 
-                if(distanceToPlayer <= _maxDistanceToPlayer)
+                if (distanceToPlayer <= _maxDistanceToPlayer)
                 {
                     float randomState = Random.Range(0f, 1f);
                     Debug.Log("Random State Value: " + randomState);
@@ -49,9 +50,9 @@ public class ChaseState : AI_State
                     }
                 }
 
-                //fazer random de trocar de states, flee, stalk
+                
 
-               return;
+                return;
             }
             else
             {

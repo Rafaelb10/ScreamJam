@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private bool isCrouching = false;
 
     [Header("Interação")]
-    public float interactDistance = 3f;
+    public float interactDistance = 5f;
 
     private Vector2 moveInput;
 
