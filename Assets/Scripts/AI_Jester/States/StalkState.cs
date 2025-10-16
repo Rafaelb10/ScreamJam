@@ -15,6 +15,7 @@ public class StalkState : AI_State
         Debug.Log("Entering Stalk State");
         _canWalkToPlayer = true;
         _navMeshAgent = _enemyController.GetComponent<NavMeshAgent>();
+        _enemyController.GetAnimationHandler().StalkingAnimationOn();
     }
     public override void Run()
     {
@@ -48,6 +49,7 @@ public class StalkState : AI_State
     public override void Exit()
     {
         _navMeshAgent.speed = _enemyController.GetWalkSpeed();
+        _enemyController.GetAnimationHandler().StalkingAnimationOff();
     }
     private void LookAtPlayer()
     {

@@ -14,7 +14,7 @@ public class SearchState : AI_State
     public override void Enter()
     {
         Debug.Log("Entering Search State");
-
+        _enemyController.GetAnimationHandler().SearchingAnimationOn();
         _searchTimer = 0f;
 
         _enemyController.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(_enemyController.LastestPlayerPos);
@@ -51,6 +51,7 @@ public class SearchState : AI_State
     public override void Exit()
     {
         Debug.Log("Exiting Search State");
+        _enemyController.GetAnimationHandler().SearchingAnimationOff();
     }
 
     IEnumerator Search()

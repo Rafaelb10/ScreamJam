@@ -6,6 +6,9 @@ public class AI_EnemyController : MonoBehaviour
     [SerializeField] private Transform[] _patrolPoints;
     [SerializeField] private Transform _player;
 
+    private Collider _collider;
+    private Animator _animator;
+
     private AI_StateMachine _stateMachine;
     private AI_Vision _aiVision;
     private AnimationHandler _animationHandler;
@@ -26,9 +29,11 @@ public class AI_EnemyController : MonoBehaviour
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _stateMachine = new AI_StateMachine();
         _aiVision = new AI_Vision(transform, _player, _angleFov, _viewDistance);
         _animationHandler = new AnimationHandler(this);
+
 
         _states[StateType.Idle] = new IdleState(this, _stateMachine);
         _states[StateType.Patrol] = new PatrolState(this, _stateMachine);
@@ -51,6 +56,16 @@ public class AI_EnemyController : MonoBehaviour
             _lastestPlayerPos = _player.position;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Player player = collision.gameObject.GetComponent<Player>();
+
+        if (player != null)
+        {
+            GameManager.Instance.GameEnded();
+        }
+    }
     public AI_State GetState(StateType stateType) => _states[stateType];
     public Transform[] GetPatrolPoints() => _patrolPoints;
     public Transform GetPlayer() => _player;
@@ -62,6 +77,7 @@ public class AI_EnemyController : MonoBehaviour
     public float GetWalkSpeed() => _walkSpeed;
     public float GetRunSpeed() => _runSpeed;
     public float GetStalkSpeed() => _stalkSpeed;
+    public Animator GetAnimator() => _animator;
     public enum StateType
     {
         Idle,
