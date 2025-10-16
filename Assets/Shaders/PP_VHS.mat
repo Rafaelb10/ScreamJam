@@ -37,7 +37,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ChromaticSpread: 3.5
+    - _ChromaticSpread: 1.29
     - _SomeFuckinValueIDK: 3
     - _VerticalArtifactSize: 8.5
     - _VerticalArtifactSpeed: 1.04

@@ -14,7 +14,11 @@ public class OpenDoor : MonoBehaviour
     private float speed = 2f; 
 
     private bool isMoving = false;
-
+    
+    //Variaveis da luz indicadora
+    [SerializeField] private GameObject lamp;
+    [SerializeField] private Material lightIncorrect;
+    [SerializeField] private Material lightCorrect;
 
     public void AddCode(float number)
     {
@@ -36,11 +40,13 @@ public class OpenDoor : MonoBehaviour
         if (Mathf.Approximately(enteredCode, code))
         {
             isOpen = true;
+            lamp.GetComponent<MeshRenderer>().sharedMaterial = lightCorrect;
             StartCoroutine(MoveZSmooth());
         }
         else
         {
             currentCodeList.Clear();
+            lamp.GetComponent<MeshRenderer>().sharedMaterial = lightIncorrect;
         }
     }
 
