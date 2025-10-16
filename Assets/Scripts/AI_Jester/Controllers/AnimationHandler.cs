@@ -35,4 +35,36 @@ public class AnimationHandler
     {
         _animator.SetBool("isStalking", false);
     }
+    public void ChasingAnimationOn()
+    {
+        _animator.SetBool("isChasing", true);
+    }
+    public void ChasingAnimationOff()
+    {
+        _animator.SetBool("isChasing", false);
+    }
+    public void WalkAnimationOn()
+    {
+        _animator.SetBool("isWalking", true);
+    }
+    public void WalkAnimationOff()
+    {
+        _animator.SetBool("isWalking", false);
+    }
+    public void AttackAnimationOn()
+    {
+        _animator.SetBool("isAttacking", true);
+    }
+    public void AttackAnimationOff()
+    {
+        _animator.SetBool("isAttacking", false);
+    }
+    public void JumpScare()
+    {
+        _animator.SetTrigger("JumpScare");
+    }
+    public void JumpScareBool()
+    {
+        _animator.SetBool("JumpScareBool",true);
+    }
 }

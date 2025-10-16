@@ -16,6 +16,7 @@ public class SearchState : AI_State
         Debug.Log("Entering Search State");
         _enemyController.GetAnimationHandler().SearchingAnimationOn();
         _searchTimer = 0f;
+        _enemyController.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = _enemyController.GetWalkSpeed();
 
         _enemyController.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(_enemyController.LastestPlayerPos);
         //colocar aqui efeito de pressão visual ?

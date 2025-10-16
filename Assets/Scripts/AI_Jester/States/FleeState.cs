@@ -18,10 +18,10 @@ public class FleeState : AI_State
         NavMeshAgent _agent = _enemyController.GetComponent<NavMeshAgent>();
         
         _agent.speed = _enemyController.GetRunSpeed();
-        _agent.SetDestination(_enemyController.GetPatrolPoints()[1].gameObject.transform.position);
+        _agent.SetDestination(_enemyController.GetPatrolPoints()[5].gameObject.transform.position);
 
-        float distanceToPoint = Vector3.Distance(_enemyController.transform.position, _enemyController.GetPatrolPoints()[1].gameObject.transform.position);
-        if (distanceToPoint < 1f)
+        float distanceToPoint = Vector3.Distance(_enemyController.transform.position, _enemyController.GetPatrolPoints()[5].gameObject.transform.position);
+        if (distanceToPoint < 3f)
         {
             _stateMachine.ChangeState(_enemyController.GetState(AI_EnemyController.StateType.Patrol));
         }
