@@ -963,6 +963,10 @@ PrefabInstance:
       propertyPath: _soundMachine
       value: 
       objectReference: {fileID: 407432092}
+    - target: {fileID: 6391896469908758077, guid: da03e75fe35f0344c86cec5a392eebab, type: 3}
+      propertyPath: _levelGameName
+      value: GameWater
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

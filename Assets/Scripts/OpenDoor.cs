@@ -7,6 +7,8 @@ public class OpenDoor : MonoBehaviour
 {
     [SerializeField] private float code;
     [SerializeField] private GameObject door;
+    [SerializeField] private AudioSource _doorSound;
+
     private List<float> currentCodeList = new List<float>();
     private bool isOpen = false;
 
@@ -26,7 +28,7 @@ public class OpenDoor : MonoBehaviour
 
         currentCodeList.Add(number);
 
-        if (currentCodeList.Count == 3)
+        if (currentCodeList.Count == 4)
         {
             CheckCode();
         }
@@ -53,7 +55,7 @@ public class OpenDoor : MonoBehaviour
     private IEnumerator MoveZSmooth()
     {
         isMoving = true;
-
+        _doorSound.Play();
         Vector3 startPos = door.transform.position;
         Vector3 targetPos = startPos + new Vector3(0, 0, distance);
 
@@ -69,5 +71,6 @@ public class OpenDoor : MonoBehaviour
 
         door.transform.position = targetPos; 
         isMoving = false;
+        _doorSound.Pause();
     }
 }

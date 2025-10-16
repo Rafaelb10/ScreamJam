@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _creditsPanel;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _deathPanel;
+    [SerializeField] private GameObject _aim;
 
     [Header ("Music/Sound")]
     [SerializeField] private AudioSource _soundMachine;
@@ -89,6 +90,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         _paused = true;
         _soundMachine.Pause();
+        Cursor.lockState = CursorLockMode.None;
+        _aim.SetActive(false);
     }
     public void Resume()
     {
@@ -97,13 +100,11 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         _paused = false;
         _soundMachine.UnPause();
+        Cursor.lockState = CursorLockMode.Locked;
+        _aim.SetActive(true);
     }
 
-    public void Retry()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    
     #endregion
 
     #region DeathMenu
