@@ -24,8 +24,7 @@ public class StalkState : AI_State
         if (_canWalkToPlayer)
         {
             _navMeshAgent.speed = _enemyController.GetStalkSpeed();
-            _navMeshAgent.SetDestination(_enemyController.GetPlayer().position);
-            
+            _navMeshAgent.SetDestination(new Vector3(_enemyController.GetPlayer().position.x,0, _enemyController.GetPlayer().position.z));
         }
 
         _enemyController.StartCoroutine(OptionDelay(2.5f));

@@ -21,7 +21,7 @@ public class FleeState : AI_State
         _agent.SetDestination(_enemyController.GetPatrolPoints()[1].gameObject.transform.position);
 
         float distanceToPoint = Vector3.Distance(_enemyController.transform.position, _enemyController.GetPatrolPoints()[1].gameObject.transform.position);
-        if (distanceToPoint < 1f)
+        if (distanceToPoint < 3f)
         {
             _stateMachine.ChangeState(_enemyController.GetState(AI_EnemyController.StateType.Patrol));
         }

@@ -19,6 +19,7 @@ public class AI_EnemyController : MonoBehaviour
 
     private float _stalkSpeed = 1;
     private float _walkSpeed = 4;
+    private float _chaseSpeed = 6;
     private float _runSpeed = 8;
 
     private Vector3 _lastestPlayerPos;

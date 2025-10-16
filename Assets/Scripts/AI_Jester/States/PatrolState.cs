@@ -28,11 +28,11 @@ public class PatrolState : AI_State
     {
         if (_navMeshAgent == null || _patrolPoints == null) return;
 
-        if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 0.5f)
+        if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 3f)
         {
             _nextPatrolIndex = Random.Range(0, _patrolPoints.Length);
             _currentPatrolIndex = (_currentPatrolIndex + _nextPatrolIndex) % _patrolPoints.Length;
-            _navMeshAgent.SetDestination(_patrolPoints[_currentPatrolIndex].position);
+            _navMeshAgent.SetDestination(new Vector3(_patrolPoints[_currentPatrolIndex].position.x, _navMeshAgent.transform.position.y, _patrolPoints[_currentPatrolIndex].position.z));
         }
 
         if (_enemyController.GetAIVision().CanSeePlayer)
