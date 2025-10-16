@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("Som")]
+    [SerializeField] private AudioSource walk, run;
+    
     [Header("Componentes")]
     private Rigidbody rb;
     private Camera cam;
@@ -64,12 +67,31 @@ public class Player : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        if (context.started)
+        {
+            walk.Play();
+        }
+        else if (context.canceled)
+        { 
+            walk.Pause();
+        }
+            
     }
 
     public void Run(InputAction.CallbackContext context)
     {
-        if (context.started) isRunning = true;
-        if (context.canceled) isRunning = false;
+        if (context.started)
+        {
+            isRunning = true;
+            walk.Stop();
+            run.Play();
+        }
+        else if (context.canceled)
+        { 
+            isRunning = false;
+            run.Stop();
+            walk.Play();
+        }
     }
 
     public void Crouch(InputAction.CallbackContext context)
