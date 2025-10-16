@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,9 +15,16 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-
-    public void GameEnded()
+    
+    //É triggered quando o enemy dá collide. Ativa jumpscare e troca de cena
+    public IEnumerator GameEnded()
     {
         Debug.Log("Game Over");
+        //Jumpscare
+        GameObject.FindObjectOfType<JumpscareScript>().JumpscareSequence();
+        yield return new WaitForSeconds(0.5f);
+        //Trocar de cena para Game Over
+        
+        yield return null;
     }
 }
