@@ -63,7 +63,7 @@ public class AI_EnemyController : MonoBehaviour
 
         if (player != null)
         {
-            GameManager.Instance.GameEnded();
+            GameManager.Instance.StartCoroutine(GameManager.Instance.GameEnded());
         }
     }
     public AI_State GetState(StateType stateType) => _states[stateType];
