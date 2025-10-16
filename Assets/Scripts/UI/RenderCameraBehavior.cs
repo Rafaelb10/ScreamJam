@@ -39,6 +39,6 @@ public class RenderCameraBehavior : MonoBehaviour
 
     void Update()
     {
-        _cam.targetTexture = _renderTexture;
+        //_cam.targetTexture = _renderTexture;
     }
 }
