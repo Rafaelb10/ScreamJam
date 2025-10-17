@@ -11,7 +11,6 @@ public class WaterLevel : MonoBehaviour
      private float startY = -1.30f;
 
     private float lastY;
-    private Coroutine reduzirAguaCoroutine;
 
     void Start()
     {
@@ -21,23 +20,34 @@ public class WaterLevel : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < targetY)
-        {
-            transform.position = new Vector3(
-                transform.position.x,
-                Mathf.MoveTowards(transform.position.y, targetY, waterRiseSpeed * Time.deltaTime),
-                transform.position.z
-            );
-        }
-
+        MoverAgua();
         AtualizarVelocidade();
 
         if (transform.position.y < lastY)
-        {
             player.SetMoveSpeed(moveSpeedNormal);
-        }
 
         lastY = transform.position.y;
+    }
+
+    private void MoverAgua()
+    {
+        float currentY = transform.position.y;
+        float step = 0f;
+
+        if (currentY < targetY)
+        {
+            step = waterRiseSpeed * Time.deltaTime;
+        }
+        else if (currentY > targetY)
+        {
+            step = -waterLowerSpeed * Time.deltaTime;
+        }
+
+        transform.position = new Vector3(
+            transform.position.x,
+            Mathf.MoveTowards(currentY, targetY, Mathf.Abs(step)),
+            transform.position.z
+        );
     }
 
     private void AtualizarVelocidade()
@@ -56,24 +66,15 @@ public class WaterLevel : MonoBehaviour
 
     public void ReduzirAgua(float valor)
     {
-        // Se já estiver a reduzir, para antes de começar outra vez
-        if (reduzirAguaCoroutine != null)
-            StopCoroutine(reduzirAguaCoroutine);
+        targetY -= valor;
 
-        reduzirAguaCoroutine = StartCoroutine(ReduzirAguaSuavemente(valor));
+        float limiteMinimo = -2.0f;
+        if (targetY < limiteMinimo)
+            targetY = limiteMinimo;
     }
 
-    private IEnumerator ReduzirAguaSuavemente(float valor)
+    public void SetTargetY(float novoValor)
     {
-        float destinoY = transform.position.y - valor;
-        while (transform.position.y > destinoY)
-        {
-            transform.position = new Vector3(
-                transform.position.x,
-                Mathf.MoveTowards(transform.position.y, destinoY, waterLowerSpeed * Time.deltaTime),
-                transform.position.z
-            );
-            yield return null;
-        }
+        targetY = novoValor;
     }
 }

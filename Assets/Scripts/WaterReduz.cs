@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WaterReduz : MonoBehaviour, IInteract
@@ -19,9 +20,11 @@ public class WaterReduz : MonoBehaviour, IInteract
         }
     }
 
-    private System.Collections.IEnumerator Cooldown()
+    private IEnumerator Cooldown()
     {
         canInteract = false;
+        yield return new WaitForSeconds(2f);
+        waterLevel.SetTargetY(-0.47f);
         yield return new WaitForSeconds(cooldownTime);
         canInteract = true;
     }
