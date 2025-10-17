@@ -14,6 +14,7 @@ public class AttackState : AI_State
         _enemyController.GetAnimationHandler().AttackAnimationOn();
         _timeToAttack = 0f;
         _enemyController.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = _enemyController.GetChaseSpeed();
+        _enemyController.Run.Play();
     }
     public override void Run()
     {
@@ -32,6 +33,7 @@ public class AttackState : AI_State
     public override void Exit()
     {
         _enemyController.GetAnimationHandler().AttackAnimationOff();
+        _enemyController.Run.Stop();
     }
 
 }

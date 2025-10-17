@@ -23,6 +23,7 @@ public class PatrolState : AI_State
         _navMeshAgent.speed = _enemyController.GetWalkSpeed();
         _patrolPoints = _enemyController.GetPatrolPoints();
         _enemyController.GetAnimationHandler().WalkAnimationOn();
+        _enemyController.Walk.Play();
         _delayTime = 0;
     }
     public override void Run()
@@ -61,5 +62,6 @@ public class PatrolState : AI_State
     public override void Exit()
     {
         _enemyController.GetAnimationHandler().WalkAnimationOff();
+        _enemyController.Walk.Stop();
     }
 }

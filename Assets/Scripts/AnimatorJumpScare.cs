@@ -18,6 +18,6 @@ public class AnimatorJumpScare : MonoBehaviour
     }
     public void PlayJumpScare()
     {
-        _animator.SetTrigger("JumpScare");
+        _animator.SetBool("JumpScare",true);
     }
 }

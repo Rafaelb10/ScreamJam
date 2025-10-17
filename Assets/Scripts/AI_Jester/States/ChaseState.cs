@@ -15,6 +15,7 @@ public class ChaseState : AI_State
         Debug.Log("Entering Chase State");
         _enemyController.GetAnimationHandler().ChasingAnimationOn();
         _enemyController.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = _enemyController.GetChaseSpeed();
+        _enemyController.Run.Play();
     }
 
     public override void Run()
@@ -67,5 +68,6 @@ public class ChaseState : AI_State
     public override void Exit()
     {
         _enemyController.GetAnimationHandler().ChasingAnimationOff();
+        _enemyController.Run.Stop();
     }
 }

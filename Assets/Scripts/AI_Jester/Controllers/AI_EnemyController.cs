@@ -6,6 +6,8 @@ public class AI_EnemyController : MonoBehaviour
     [SerializeField] private Transform[] _patrolPoints;
     [SerializeField] private Transform _player;
 
+    [SerializeField] private AudioSource walk, run;
+
     private Collider _collider;
     private Animator _animator;
 
@@ -27,6 +29,8 @@ public class AI_EnemyController : MonoBehaviour
     private Dictionary<StateType, AI_State> _states = new Dictionary<StateType,AI_State>();
 
     public Vector3 LastestPlayerPos { get => _lastestPlayerPos; set => _lastestPlayerPos = value; }
+    public AudioSource Walk { get => walk; set => walk = value; }
+    public AudioSource Run { get => run; set => run = value; }
 
     private void Start()
     {

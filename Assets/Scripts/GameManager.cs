@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private bool isGameOver = false;
+    [SerializeField] private GameObject DeathScreen;
 
     public bool IsGameOver { get => isGameOver; set => isGameOver = value; }
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
         //Jumpscare
         GameObject.FindObjectOfType<JumpscareScript>().JumpscareSequence();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         //Trocar de cena para Game Over
         
         yield return null;
