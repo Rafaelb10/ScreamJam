@@ -13,7 +13,7 @@ public class JumpscareScript : MonoBehaviour
 
     public void JumpscareSequence()
     {
-        _jesterController.SetBool("isAttacking", true);
+        _jesterController.SetTrigger("JumpScare");
         _jumpscareUI.SetActive(true);
     }
 }
