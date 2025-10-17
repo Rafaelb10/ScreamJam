@@ -56,13 +56,36 @@ public class UIManager : MonoBehaviour
     }
     public void ReturnMainMenu()
     {
+        if (_soundMachine != null)
+        {
+            _soundMachine.UnPause();
+            _soundMachine.volume = 1f;
+            _soundMachine.Play();
+        }
+
         Cursor.lockState = CursorLockMode.None;
-        
         Cursor.visible = true;
+
         SceneManager.LoadScene(_MenuName);
-        
     }
 
+    public void Retry()
+    {
+        // Despausa o som antes de trocar de cena
+        if (_soundMachine != null)
+        {
+            _soundMachine.UnPause();
+            _soundMachine.volume = 1f;
+            _soundMachine.Play();
+        }
+
+        // Desbloqueia cursor se necessário
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        // Reinicia a cena atual
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void Credits()
     {
         CloseAllUIs();

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         if(Instance != null)
         {
             Destroy(gameObject);
+           
         }
         else
         {
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 1;
         DeathScreen.SetActive(false);
+        jester.SetActive(true);
+        audiosources.SetActive(true);
     }
     
     //É triggered quando o enemy dá collide. Ativa jumpscare e troca de cena
