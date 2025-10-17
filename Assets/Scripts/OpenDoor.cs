@@ -12,15 +12,21 @@ public class OpenDoor : MonoBehaviour
     private List<float> currentCodeList = new List<float>();
     private bool isOpen = false;
 
-    private float distance = 2f; 
-    private float speed = 2f; 
+    private float distance = 2f;
+    private float speed = 2f;
 
     private bool isMoving = false;
-    
+
     //Variaveis da luz indicadora
     [SerializeField] private GameObject lamp;
     [SerializeField] private Material lightIncorrect;
     [SerializeField] private Material lightCorrect;
+    [SerializeField] private Material lightNeutra;
+
+    private void Start()
+    {
+        lamp.GetComponent<MeshRenderer>().sharedMaterial = lightNeutra;
+    }
 
     public void AddCode(float number)
     {
@@ -49,6 +55,7 @@ public class OpenDoor : MonoBehaviour
         {
             currentCodeList.Clear();
             lamp.GetComponent<MeshRenderer>().sharedMaterial = lightIncorrect;
+            StartCoroutine(lightRevert());
         }
     }
 
@@ -60,7 +67,7 @@ public class OpenDoor : MonoBehaviour
         Vector3 targetPos = startPos + new Vector3(0, 0, distance);
 
         float elapsed = 0f;
-        float duration = distance / speed; 
+        float duration = distance / speed;
 
         while (elapsed < duration)
         {
@@ -69,8 +76,14 @@ public class OpenDoor : MonoBehaviour
             yield return null;
         }
 
-        door.transform.position = targetPos; 
+        door.transform.position = targetPos;
         isMoving = false;
         _doorSound.Pause();
+    }
+
+    private IEnumerator lightRevert()
+    {
+        yield return new WaitForSeconds(2.5f);
+        lamp.GetComponent<MeshRenderer>().sharedMaterial = lightNeutra;
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 public class WaterReduz : MonoBehaviour, IInteract
 {
     [SerializeField] private WaterLevel waterLevel;
-    private float reductionAmount = 0.3f;
-    private float cooldownTime = 5f; 
+    private float reductionAmount = 0.2f;
+    private float cooldownTime = 20f; 
 
     private bool canInteract = true;
 

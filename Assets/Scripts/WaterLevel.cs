@@ -5,10 +5,10 @@ public class WaterLevel : MonoBehaviour
 {
     [SerializeField] private Player player;
      private float moveSpeedNormal = 3f;
-     private float waterRiseSpeed = 0.01f;
-     private float waterLowerSpeed = 0.5f; // Velocidade da redução
+     private float waterRiseSpeed = 0.007f;
+     private float waterLowerSpeed = 0.2f;
      private float targetY = -0.47f;
-     private float startY = -2.01f;
+     private float startY = -1.30f;
 
     private float lastY;
     private Coroutine reduzirAguaCoroutine;
