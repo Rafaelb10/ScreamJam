@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     private bool _paused = false;
     private bool _isDead = false;
 
+    public string MenuName { get => _MenuName; set => _MenuName = value; }
+
     private void Awake()
     {
         if (_creditsPanel != null)
@@ -125,7 +127,7 @@ public class UIManager : MonoBehaviour
         CloseAllUIs(); // Fecha outras UIs (só por segurança)
         _deathPanel.SetActive(true);
         _isDead = true;
-
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f; // pausa o jogo ao morrer
     }
 
