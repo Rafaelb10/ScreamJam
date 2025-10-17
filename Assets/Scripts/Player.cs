@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         cam = Camera.main;
         originalHeight = transform.localScale.y;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        
         Cursor.visible = false;
     }
 

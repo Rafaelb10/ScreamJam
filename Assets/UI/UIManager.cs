@@ -31,12 +31,19 @@ public class UIManager : MonoBehaviour
         if (_deathPanel != null)
             _deathPanel.SetActive(false);
 
+        if (_aim != null)
+            _aim.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         Time.timeScale = 1.0f;
     }
     #region MainMenu
     public void NewGame()
     {
         SceneManager.LoadScene(_levelGameName);
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void Surprise()
     {
@@ -45,10 +52,15 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        Debug.LogWarning("Quit");
     }
     public void ReturnMainMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
+        
+        Cursor.visible = true;
         SceneManager.LoadScene(_MenuName);
+        
     }
 
     public void Credits()
@@ -79,6 +91,9 @@ public class UIManager : MonoBehaviour
 
         if (_deathPanel != null)
             _deathPanel.SetActive(false);
+
+        if(_aim != null)
+            _aim.SetActive(false);
 
         _creditsOpen = false;
         _paused = false;
@@ -122,12 +137,15 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogWarning("Death panel is not assigned in UIManager.");
             return;
+           
         }
-
+        Cursor.lockState = CursorLockMode.None;
+        
+        Cursor.visible = true;
         CloseAllUIs(); // Fecha outras UIs (só por segurança)
         _deathPanel.SetActive(true);
         _isDead = true;
-        Cursor.lockState = CursorLockMode.None;
+        
         Time.timeScale = 0f; // pausa o jogo ao morrer
     }
 
@@ -141,6 +159,7 @@ public class UIManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Escape))
             {
                 CloseAllUIs();
+                
             }
         }
         if (!_creditsOpen && !_isDead && Input.GetKeyDown(KeyCode.Escape))
