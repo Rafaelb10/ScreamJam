@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     private bool _paused = false;
     private bool _isDead = false;
 
+    [SerializeField] private SupriseScript _script;
     public string MenuName { get => _MenuName; set => _MenuName = value; }
 
     private void Awake()
@@ -47,7 +48,7 @@ public class UIManager : MonoBehaviour
     }
     public void Surprise()
     {
-
+        _script.RandomSuprise();
     }
     public void QuitGame()
     {

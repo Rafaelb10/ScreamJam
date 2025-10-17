@@ -2,7 +2,7 @@
 - Project name: ScreamJam
 - Unity version: Unity 6000.2.6f2
 - Active game object:
-  - Name: WaterVolume
+  - Name: Surprise
   - Tag: Untagged
-  - Layer: Default
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
