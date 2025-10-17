@@ -6,7 +6,7 @@ public class AI_EnemyController : MonoBehaviour
     [SerializeField] private Transform[] _patrolPoints;
     [SerializeField] private Transform _player;
 
-    [SerializeField] private AudioSource walk, run;
+    [SerializeField] private AudioSource walk, run, screamRun, laugh;
 
     private Collider _collider;
     private Animator _animator;
@@ -20,9 +20,9 @@ public class AI_EnemyController : MonoBehaviour
     private float _changeStateDistance = 10f;
 
     private float _stalkSpeed = 1;
-    private float _walkSpeed = 2.5f;
-    private float _chaseSpeed = 4;
-    private float _runSpeed = 8;
+    private float _walkSpeed = 2f;
+    private float _chaseSpeed = 3;
+    private float _runSpeed = 5;
 
     private Vector3 _lastestPlayerPos;
     
@@ -31,6 +31,10 @@ public class AI_EnemyController : MonoBehaviour
     public Vector3 LastestPlayerPos { get => _lastestPlayerPos; set => _lastestPlayerPos = value; }
     public AudioSource Walk { get => walk; set => walk = value; }
     public AudioSource Run { get => run; set => run = value; }
+    public AudioSource Walk1 { get => walk; set => walk = value; }
+    public AudioSource Run1 { get => run; set => run = value; }
+    public AudioSource ScreamRun { get => screamRun; set => screamRun = value; }
+    public AudioSource Laugh { get => laugh; set => laugh = value; }
 
     private void Start()
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 public class AttackState : AI_State
 {
     float _timeToAttack;
-    float _maxTimeToAttack = 3f;
+    float _maxTimeToAttack = 2f;
     public AttackState(AI_EnemyController enemyController, AI_StateMachine stateMachine) : base(enemyController, stateMachine)
     {
     }
@@ -15,6 +15,7 @@ public class AttackState : AI_State
         _timeToAttack = 0f;
         _enemyController.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = _enemyController.GetChaseSpeed();
         _enemyController.Run.Play();
+        _enemyController.ScreamRun.Play();
     }
     public override void Run()
     {
@@ -34,6 +35,7 @@ public class AttackState : AI_State
     {
         _enemyController.GetAnimationHandler().AttackAnimationOff();
         _enemyController.Run.Stop();
+        _enemyController.ScreamRun.Stop();
     }
 
 }

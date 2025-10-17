@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private string _levelGameName;
+    [SerializeField] private string _levelGameName, _MenuName;
 
     [Header("UI Panels")]
     [SerializeField] private GameObject _creditsPanel;
@@ -43,6 +43,10 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    public void ReturnMainMenu()
+    {
+        SceneManager.LoadScene(_MenuName);
     }
 
     public void Credits()

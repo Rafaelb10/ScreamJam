@@ -5,7 +5,7 @@ public class WaterLevel : MonoBehaviour
 {
     [SerializeField] private Player player;
      private float moveSpeedNormal = 3f;
-     private float waterRiseSpeed = 0.02f;
+     private float waterRiseSpeed = 0.009f;
      private float waterLowerSpeed = 0.5f; // Velocidade da redução
      private float targetY = -0.47f;
      private float startY = -2.01f;

@@ -50,10 +50,13 @@ public class PatrolState : AI_State
                 if (_randomToEffects <= 0.5f)
                 {
                     //faz efeito
+                    _enemyController.Laugh.Play();
+                    Debug.Log("Fez Laugh");
                 }
                 else
                 {
                     //faz efeito2.0
+                    Debug.Log("Nao Fez Laugh");
                 }
             }
         }
