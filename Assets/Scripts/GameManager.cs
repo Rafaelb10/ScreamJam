@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         jumpScareSound.Stop();
         DeathScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         //Trocar de cena para Game Over
         
         yield return null;

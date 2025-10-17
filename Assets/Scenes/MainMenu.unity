@@ -1694,6 +1694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicaAmbiente
       objectReference: {fileID: 0}
+    - target: {fileID: 6310196633340224036, guid: 129d03fc838604148a5de081b4dcff4b, type: 3}
+      propertyPath: m_Volume
+      value: 0.158
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

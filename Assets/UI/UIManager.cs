@@ -43,9 +43,20 @@ public class UIManager : MonoBehaviour
     #region MainMenu
     public void NewGame()
     {
-        SceneManager.LoadScene(_levelGameName);
+        if (_soundMachine != null)
+        {
+            _soundMachine.UnPause();     // Caso tenha sido pausado
+            _soundMachine.volume = 1f;   // Garante volume cheio
+            if (!_soundMachine.isPlaying)
+                _soundMachine.Play();    // Recomeça se necessário
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        SceneManager.LoadScene(_levelGameName);
     }
+
     public void Surprise()
     {
         _script.RandomSuprise();
@@ -60,7 +71,7 @@ public class UIManager : MonoBehaviour
         if (_soundMachine != null)
         {
             _soundMachine.UnPause();
-            _soundMachine.volume = 1f;
+            //_soundMachine.volume = 1f;
             _soundMachine.Play();
         }
 
@@ -76,7 +87,7 @@ public class UIManager : MonoBehaviour
         if (_soundMachine != null)
         {
             _soundMachine.UnPause();
-            _soundMachine.volume = 1f;
+            //_soundMachine.volume = 1f;
             _soundMachine.Play();
         }
 
@@ -163,13 +174,13 @@ public class UIManager : MonoBehaviour
             return;
            
         }
-        Cursor.lockState = CursorLockMode.None;
         
-        Cursor.visible = true;
+        
         CloseAllUIs(); // Fecha outras UIs (só por segurança)
         _deathPanel.SetActive(true);
         _isDead = true;
-        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0f; // pausa o jogo ao morrer
     }
 
